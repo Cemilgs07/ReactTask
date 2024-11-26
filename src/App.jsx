@@ -19,13 +19,19 @@ function App() {
     ];
     settaks(createTaks);
   };
+  const onDeleteApp = (event) => {
+    const afterDeleteTask = taks.filter((num) => {
+      return num.id !== event;
+    });
+    settaks(afterDeleteTask);
+  };
 
   return (
     <>
       <div className="App">
         <Task getData={handleData} />
         <h1>Görevler</h1>
-        <TaskList task={taks} />
+        <TaskList onDeleteList={onDeleteApp} task={taks} />
       </div>
     </>
   );

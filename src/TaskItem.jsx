@@ -1,7 +1,9 @@
 import React from "react";
 import "./TaskItemCss.css";
-function TaskItem({ data }) {
-  console.log(data);
+function TaskItem({ data, onDeleteItem }) {
+  const handleDeleteClick = () => {
+    onDeleteItem(data.id);
+  };
   return (
     <div className="TaskBody">
       <div>
@@ -18,12 +20,14 @@ function TaskItem({ data }) {
       </div>
       <div>
         <button
+          onClick={handleDeleteClick}
           className="btn-Task"
           style={{ border: "1px Solid red", background: "red" }}
         >
           Sil
         </button>
         <button
+          onClick={handleDeleteClick}
           type="submit"
           className="btn-Task"
           style={{ border: "1px Solid Blue", background: "Blue" }}
