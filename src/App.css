@@ -4,7 +4,6 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap; /* Sarmayı aktif bırak */
-  width: 480px; /* Sabit genişlik */
   margin: 0 auto; /* Yatayda ortalama */
   box-sizing: border-box; /* Genişlik hesaplamasını iyileştirir */
   border-radius: 10px;
@@ -12,4 +11,9 @@
 
 hr.new4 {
   border: 1px solid red;
+}
+.TaskListItem {
+  display: flex;
+  columns: 100px 3;
+  flex-wrap: wrap;
 }

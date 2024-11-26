@@ -3,13 +3,21 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import Task from "./Task";
+import TaskList from "./TaskList";
 
 function App() {
-  const [result, setresult] = useState([]);
+  const [taks, settaks] = useState([]);
 
   const handleData = (data) => {
-    setresult([...result, data]);
-    console.log(result);
+    const createTaks = [
+      ...taks,
+      {
+        id: Math.round(Math.random() * 9999999),
+        title: data.title,
+        taskDesc: data.taskDesc,
+      },
+    ];
+    settaks(createTaks);
   };
 
   return (
@@ -17,13 +25,7 @@ function App() {
       <div className="App">
         <Task getData={handleData} />
         <h1>Görevler</h1>
-        {result.map((deger, index) => {
-          return (
-            <p key={index}>
-              title : {deger.title} Area Değeri : {deger.taskDesc}
-            </p>
-          );
-        })}
+        <TaskList task={taks} />
       </div>
     </>
   );
