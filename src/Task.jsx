@@ -5,6 +5,16 @@ function Task({ getData }) {
   const [Inputresult, setInputresult] = useState("");
   const [TextArearesult, setTextArearesult] = useState("");
   const handleSubmit = (e) => {
+    if (!Inputresult || !TextArearesult) {
+      Swal.fire({
+        icon: "error",
+        title: "Bir Hata Oluştu.",
+        text: "Title ve Task Boş geçilemez",
+      });
+      e.preventDefault();
+      return;
+    }
+
     e.preventDefault();
     var yeni = {
       title: Inputresult,
