@@ -25,13 +25,36 @@ function App() {
     });
     settaks(afterDeleteTask);
   };
+  const UpdateData = (updateDataApp) => {
+    // console.log(updateDataApp + " Gelen Data");
+
+    const updateTask = taks.map((num2) => {
+      if (updateDataApp.id === num2.id) {
+        return (
+          // console.log(taks + " bütün Data"),
+          {
+            id: updateDataApp.id,
+            title: updateDataApp.title,
+            taskDesc: updateDataApp.taskDesc,
+          }
+        );
+      }
+      return num2;
+    });
+    settaks(updateTask);
+    // console.log(taks +"Merhba");
+  };
 
   return (
     <>
       <div className="App">
         <Task getData={handleData} />
         <h1>Görevler</h1>
-        <TaskList onDeleteList={onDeleteApp} task={taks} />
+        <TaskList
+          OnUpdateItemTaskList={UpdateData}
+          onDeleteList={onDeleteApp}
+          task={taks}
+        />
       </div>
     </>
   );
