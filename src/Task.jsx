@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import "./taskcss.css";
-function Task() {
-  const [Inputresult, setInputresult] = useState();
-  const [TextArearesult, setTextArearesult] = useState();
-  const [deger, setdeger] = useState();
+
+function Task({ getData }) {
+  const [Inputresult, setInputresult] = useState("");
+  const [TextArearesult, setTextArearesult] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-    setdeger(TextArearesult);
+    var yeni = {
+      title: Inputresult,
+      taskDesc: TextArearesult,
+    };
+    getData(yeni);
+    setInputresult("");
+    setTextArearesult("");
   };
   return (
     <div className="OutBorder">
@@ -42,7 +48,6 @@ function Task() {
           <button style={{ cursor: "pointer" }} className="btn">
             Task Ekle
           </button>
-          <p>{deger}</p>
         </div>
       </form>
     </div>

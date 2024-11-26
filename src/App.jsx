@@ -5,13 +5,25 @@ import "./App.css";
 import Task from "./Task";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [result, setresult] = useState([]);
+
+  const handleData = (data) => {
+    setresult([...result, data]);
+    console.log(result);
+  };
 
   return (
     <>
       <div className="App">
-        <Task />
+        <Task getData={handleData} />
         <h1>Görevler</h1>
+        {result.map((deger, index) => {
+          return (
+            <p key={index}>
+              title : {deger.title} Area Değeri : {deger.taskDesc}
+            </p>
+          );
+        })}
       </div>
     </>
   );
